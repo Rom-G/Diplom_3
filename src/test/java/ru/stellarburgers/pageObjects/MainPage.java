@@ -1,6 +1,7 @@
 package ru.stellarburgers.pageObjects;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,10 +26,10 @@ public class MainPage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(MAIN_LOGIN_BUTTON));
     }
 
-    @Step("Click the login button")
-    public void clickLoginButton() {
-        WebElement button = wait.until(ExpectedConditions.elementToBeClickable(MAIN_LOGIN_BUTTON));
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", button);
-        button.click();
+    @Step("Click the {name}")
+    public void clickElement(By locator, String name) {
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
+        element.click();
     }
 }
