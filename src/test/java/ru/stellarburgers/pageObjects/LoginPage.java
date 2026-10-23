@@ -16,7 +16,7 @@ public class LoginPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public LoginPage(WebDriver driver, WebDriverWait wait) {
+    public LoginPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
     }

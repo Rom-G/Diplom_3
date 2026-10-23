@@ -16,7 +16,7 @@ public class RegistrationPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public RegistrationPage(WebDriver driver, WebDriverWait wait) {
+    public RegistrationPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
     }

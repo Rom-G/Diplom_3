@@ -15,7 +15,7 @@ public class MainPage {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
-    public MainPage(WebDriver driver, WebDriverWait wait) {
+    public MainPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
     }

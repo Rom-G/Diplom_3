@@ -11,7 +11,7 @@ public class AccountPage {
 
     private final WebDriverWait wait;
 
-    public AccountPage(WebDriver driver, WebDriverWait wait) {
+    public AccountPage(WebDriver driver) {
         this.wait = new WebDriverWait(driver, 10);
     }
 
