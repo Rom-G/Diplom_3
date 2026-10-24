@@ -1,12 +1,14 @@
 package ru.stellarburgers.pageObjects;
 
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static ru.stellarburgers.locators.MainLocators.MAIN_LOGIN_BUTTON;
-
 public class MainPage extends BasePage {
+
+    public final By MAIN_LOGIN_BUTTON = By.xpath("//button[starts-with(text(), 'Войти')]");
+    public final By MAIN_ACCOUNT_LINK = By.cssSelector("a[href='/account']");
 
     public MainPage(WebDriver driver) {
         super(driver);
