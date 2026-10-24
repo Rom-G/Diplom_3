@@ -11,6 +11,11 @@ public class AccountPage {
 
     private final WebDriverWait wait;
 
+    public final By NAME_FIELD = By.xpath(
+            "//label[contains(text(), 'Имя')]/ancestor::*[@class='input__container']//input");
+    public final By EMAIL_FIELD = By.xpath(
+            "//label[contains(text(), 'Email')]/ancestor::*[@class='input__container']//input");
+
     public AccountPage(WebDriver driver) {
         this.wait = new WebDriverWait(driver, 10);
     }
