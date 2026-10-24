@@ -7,8 +7,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
 
-    public final By MAIN_LOGIN_BUTTON = By.xpath("//button[starts-with(text(), 'Войти')]");
-    public final By MAIN_ACCOUNT_LINK = By.cssSelector("a[href='/account']");
+    public final By LOGIN_BUTTON = By.xpath("//button[starts-with(text(), 'Войти')]");
+    public final By ACCOUNT_LINK = By.cssSelector("a[href='/account']");
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -17,6 +17,6 @@ public class MainPage extends BasePage {
     @Step("Open the main page and wait for the login button to load")
     public void openMainPage() {
         getDriver().get("https://qa-stellarburgers.education-services.ru/");
-        getWait().until(ExpectedConditions.visibilityOfElementLocated(MAIN_LOGIN_BUTTON));
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
     }
 }
