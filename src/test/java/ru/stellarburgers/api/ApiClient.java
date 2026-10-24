@@ -1,4 +1,4 @@
-package ru.stellarburgers.client;
+package ru.stellarburgers.api;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
