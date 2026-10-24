@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
 
-    public final By LOGIN_BUTTON = By.xpath("//button[starts-with(text(), 'Войти')]");
+    public final By LOGIN_BUTTON = By.xpath("//button[contains(text(), 'Войти')]");
     public final By ACCOUNT_LINK = By.cssSelector("a[href='/account']");
 
     public MainPage(WebDriver driver) {
