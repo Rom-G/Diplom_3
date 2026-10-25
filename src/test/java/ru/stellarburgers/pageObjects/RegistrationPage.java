@@ -26,6 +26,7 @@ public class RegistrationPage extends BasePage {
 
     public final By REGISTER_BUTTON = By.xpath("//button[normalize-space()='Зарегистрироваться']");
     public final By PASSWORD_ERROR_PARAGRAPH = By.xpath("//p[normalize-space()='Некорректный пароль']");
+    public final String PASSWORD_ERROR_TEXT = "Некорректный пароль";
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
