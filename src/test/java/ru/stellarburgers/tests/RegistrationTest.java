@@ -61,12 +61,17 @@ public class RegistrationTest {
     @Test
     @DisplayName("Check the password length is less than 6 characters invalid")
     @Description("The test verifies that it is impossible to create a user with an invalid password")
-    public void registrationWithPasswordLessThan6CharsFails() {
+    public void registrationWithPasswordLessThan6CharsFailsTest() {
         main.openMainPage();
         main.clickElement(main.LOGIN_BUTTON, "login button");
         login.clickElement(login.REGISTRATION_LINK, "registration link");
         registration.fillForm(INVALID_PASSWORD);
         registration.clickElement(registration.REGISTER_BUTTON, "register button");
+        String actualError = registration.findVisiblePasswordErrorAndGetText();
+
+        assertEquals("Получено сообщение: " + actualError + ". Ожидалось: " + registration.PASSWORD_ERROR_TEXT,
+                registration.PASSWORD_ERROR_TEXT,
+                actualError);
     }
 
     @After
