@@ -1,31 +1,27 @@
 package ru.stellarburgers.pageObjects;
 
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AccountPage {
+public class AccountPage extends BasePage {
 
-    private final WebDriverWait wait;
-
-    public final By NAME_FIELD =
+    private final By NAME_FIELD =
             By.xpath("//ul[contains(@class, 'Profile_profileList')]" +
                     "//label[normalize-space()='Имя']/following-sibling::input");
 
-    public final By EMAIL_FIELD =
+    private final By EMAIL_FIELD =
             By.xpath("//ul[contains(@class, 'Profile_profileList')]" +
                     "//label[normalize-space()='Логин']/following-sibling::input");
 
     public AccountPage(WebDriver driver) {
-        this.wait = new WebDriverWait(driver, 10);
+        super(driver);
     }
 
-    @Step("Extract value of {fieldName} field")
-    public String extractTextFieldValue(By locator, String fieldName) {
-        WebElement field = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-        return field.getAttribute("value");
+    public String extractNameFieldValue() {
+        return extractFieldValue(NAME_FIELD, "Name");
+    }
+
+    public String extractEmailFieldValue() {
+        return extractFieldValue(EMAIL_FIELD, "Email");
     }
 }
