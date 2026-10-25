@@ -8,14 +8,14 @@ import static ru.stellarburgers.data.UserData.*;
 
 public class LoginPage extends BasePage {
 
-    public final By REGISTRATION_LINK = By.xpath("//*[@href='/register']");
-    public final By LOGIN_BUTTON = By.xpath("//button[normalize-space()='Войти']");
-    public final By EMAIL_FIELD =
+    private final By REGISTER_LINK = By.xpath("//*[@href='/register']");
+    private final By LOGIN_BUTTON = By.xpath("//button[normalize-space()='Войти']");
+    private final By EMAIL_FIELD =
             By.xpath("//h2[normalize-space()='Вход']" +
                     "/ancestor::div[contains(@class,'Auth_login')]" +
                     "//label[normalize-space()='Email']/following-sibling::input");
 
-    public final By PASSWORD_FIELD =
+    private final By PASSWORD_FIELD =
             By.xpath("//h2[normalize-space()='Вход']" +
                     "/ancestor::div[contains(@class,'Auth_login')]" +
                     "//label[normalize-space()='Пароль']/following-sibling::input");
@@ -28,5 +28,13 @@ public class LoginPage extends BasePage {
     public void fillForm() {
         fillInput(EMAIL_FIELD, EMAIL);
         fillInput(PASSWORD_FIELD, PASSWORD);
+    }
+
+    public void clickRegisterLink() {
+        clickElement(REGISTER_LINK, "registration link");
+    }
+
+    public void clickLoginButton() {
+        clickElement(LOGIN_BUTTON, "login button");
     }
 }
