@@ -1,18 +1,16 @@
 package ru.stellarburgers.factory;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import lombok.Getter;
 import org.junit.rules.ExternalResource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+@Getter
 public class DriverFactory extends ExternalResource {
 
     private WebDriver driver;
-
-    public WebDriver getDriver() {
-        return driver;
-    }
 
     public void initDriver() {
         if ("firefox".equals(System.getProperty("browser")))
