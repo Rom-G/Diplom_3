@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @Getter
 public abstract class BasePage {
 
-    public final By OVERLAY_LOCATOR = By.className("Modal_modal__P3_V5");
     private final WebDriver driver;
     private final WebDriverWait wait;
 
@@ -33,5 +32,11 @@ public abstract class BasePage {
         WebElement field = wait.until(ExpectedConditions.elementToBeClickable(locator));
         field.clear();
         field.sendKeys(value);
+    }
+
+    @Step("Extract value of {fieldName} field")
+    public String extractFieldValue(By locator, String fieldName) {
+        WebElement field = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+        return field.getAttribute("value");
     }
 }
