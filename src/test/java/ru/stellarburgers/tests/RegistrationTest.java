@@ -42,11 +42,11 @@ public class RegistrationTest {
     @Test
     @DisplayName("Check that the user can be created")
     @Description("Base test for create user")
-    public void registrationSuccessTest() throws InterruptedException {
+    public void registrationSuccessTest() {
         main.openMainPage();
         main.clickElement(main.LOGIN_BUTTON, "login button");
         login.clickElement(login.REGISTRATION_LINK, "registration link");
-        registration.fillForm();
+        registration.fillForm(PASSWORD);
         registration.clickElement(registration.REGISTER_BUTTON, "register button");
         login.fillForm();
         login.clickElement(login.LOGIN_BUTTON, "login button");
@@ -56,6 +56,17 @@ public class RegistrationTest {
                 NAME, account.extractTextFieldValue(account.NAME_FIELD, "Name"));
         assertEquals("The data in the Email field and the registration data are different",
                 EMAIL, account.extractTextFieldValue(account.EMAIL_FIELD, "Email"));
+    }
+
+    @Test
+    @DisplayName("Check the password length is less than 6 characters invalid")
+    @Description("The test verifies that it is impossible to create a user with an invalid password")
+    public void registrationWithPasswordLessThan6CharsFails() {
+        main.openMainPage();
+        main.clickElement(main.LOGIN_BUTTON, "login button");
+        login.clickElement(login.REGISTRATION_LINK, "registration link");
+        registration.fillForm(INVALID_PASSWORD);
+        registration.clickElement(registration.REGISTER_BUTTON, "register button");
     }
 
     @After
