@@ -21,9 +21,9 @@ public class RegistrationPage extends BasePage {
     }
 
     @Step("Filling out the registration form")
-    public void fillForm() {
+    public void fillForm(String password) {
         fillInput(NAME_FIELD, NAME);
         fillInput(EMAIL_FIELD, EMAIL);
-        fillInput(PASSWORD_FIELD, PASSWORD);
+        fillInput(PASSWORD_FIELD, password);
     }
 }
