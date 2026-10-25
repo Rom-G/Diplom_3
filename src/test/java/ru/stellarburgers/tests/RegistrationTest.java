@@ -3,6 +3,7 @@ package ru.stellarburgers.tests;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -20,20 +21,28 @@ import static ru.stellarburgers.data.UserData.*;
 
 public class RegistrationTest {
 
+    private MainPage main;
+    private LoginPage login;
+    private RegistrationPage registration;
+    private AccountPage account;
+
     @Rule
     public DriverFactory factory = new DriverFactory();
+
+    @Before
+    public void setUp() {
+        WebDriver driver = factory.getDriver();
+
+        main = new MainPage(driver);
+        login = new LoginPage(driver);
+        registration = new RegistrationPage(driver);
+        account = new AccountPage(driver);
+    }
 
     @Test
     @DisplayName("Check that the user can be created")
     @Description("Base test for create user")
     public void registrationSuccessTest() throws InterruptedException {
-        WebDriver driver = factory.getDriver();
-
-        MainPage main = new MainPage(driver);
-        LoginPage login = new LoginPage(driver);
-        RegistrationPage registration = new RegistrationPage(driver);
-        AccountPage account = new AccountPage(driver);
-
         main.openMainPage();
         main.clickElement(main.LOGIN_BUTTON, "login button");
         login.clickElement(login.REGISTRATION_LINK, "registration link");
