@@ -10,10 +10,15 @@ public class LoginPage extends BasePage {
 
     public final By REGISTRATION_LINK = By.xpath("//*[@href='/register']");
     public final By LOGIN_BUTTON = By.xpath("//button[contains(text(), 'Войти')]");
-    public final By EMAIL_FIELD = By.xpath(
-            "//label[contains(text(), 'Email')]/ancestor::*[@class='input__container']//input");
-    public final By PASSWORD_FIELD = By.xpath(
-            "//label[contains(text(), 'Пароль')]/ancestor::*[@class='input__container']//input");
+    public final By EMAIL_FIELD =
+            By.xpath("//h2[normalize-space()='Вход']" +
+                    "/ancestor::div[contains(@class,'Auth_login')]" +
+                    "//label[normalize-space()='Email']/following-sibling::input");
+
+    public final By PASSWORD_FIELD =
+            By.xpath("//h2[normalize-space()='Вход']" +
+                    "/ancestor::div[contains(@class,'Auth_login')]" +
+                    "//label[normalize-space()='Пароль']/following-sibling::input");
 
     public LoginPage(WebDriver driver) {
         super(driver);
