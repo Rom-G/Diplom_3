@@ -9,7 +9,7 @@ import static ru.stellarburgers.data.UserData.*;
 public class LoginPage extends BasePage {
 
     public final By REGISTRATION_LINK = By.xpath("//*[@href='/register']");
-    public final By LOGIN_BUTTON = By.xpath("//button[contains(text(), 'Войти')]");
+    public final By LOGIN_BUTTON = By.xpath("//button[normalize-space()='Войти']");
     public final By EMAIL_FIELD =
             By.xpath("//h2[normalize-space()='Вход']" +
                     "/ancestor::div[contains(@class,'Auth_login')]" +
