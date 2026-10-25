@@ -43,34 +43,34 @@ public class RegistrationTest {
     @DisplayName("Check that the user can be created")
     @Description("Base test for create user")
     public void registrationSuccessTest() {
-        main.openMainPage();
-        main.clickElement(main.LOGIN_BUTTON, "login button");
-        login.clickElement(login.REGISTRATION_LINK, "registration link");
+        main.open();
+        main.clickLoginButton();
+        login.clickRegisterLink();
         registration.fillForm(PASSWORD);
-        registration.clickElement(registration.REGISTER_BUTTON, "register button");
+        registration.clickRegisterButton();
         login.fillForm();
-        login.clickElement(login.LOGIN_BUTTON, "login button");
-        main.clickElement(main.ACCOUNT_LINK, "personal account link");
+        login.clickLoginButton();
+        main.clickPersonalAccountLink();
 
         assertEquals("The data in the Name field and the registration data are different",
-                NAME, account.extractTextFieldValue(account.NAME_FIELD, "Name"));
+                NAME, account.extractNameFieldValue());
         assertEquals("The data in the Email field and the registration data are different",
-                EMAIL, account.extractTextFieldValue(account.EMAIL_FIELD, "Email"));
+                EMAIL, account.extractEmailFieldValue());
     }
 
     @Test
     @DisplayName("Check the password length is less than 6 characters invalid")
     @Description("The test verifies that it is impossible to create a user with an invalid password")
     public void registrationWithPasswordLessThan6CharsFailsTest() {
-        main.openMainPage();
-        main.clickElement(main.LOGIN_BUTTON, "login button");
-        login.clickElement(login.REGISTRATION_LINK, "registration link");
+        main.open();
+        main.clickLoginButton();
+        login.clickRegisterLink();
         registration.fillForm(INVALID_PASSWORD);
-        registration.clickElement(registration.REGISTER_BUTTON, "register button");
+        registration.clickRegisterButton();
         String actualError = registration.findVisiblePasswordErrorAndGetText();
 
-        assertEquals("Получено сообщение: " + actualError + ". Ожидалось: " + registration.PASSWORD_ERROR_TEXT,
-                registration.PASSWORD_ERROR_TEXT,
+        assertEquals("Получено сообщение: " + actualError + ". Ожидалось: " + RegistrationPage.PASSWORD_ERROR_TEXT,
+                RegistrationPage.PASSWORD_ERROR_TEXT,
                 actualError);
     }
 
