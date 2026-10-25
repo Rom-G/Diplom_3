@@ -12,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 @Getter
 public abstract class BasePage {
 
+    public final By OVERLAY_LOCATOR = By.className("Modal_modal__P3_V5");
     private final WebDriver driver;
     private final WebDriverWait wait;
 
@@ -29,7 +30,7 @@ public abstract class BasePage {
 
     @Step("Enter {value} in the field")
     public void fillInput(By locator, String value) {
-        WebElement field = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+        WebElement field = wait.until(ExpectedConditions.elementToBeClickable(locator));
         field.clear();
         field.sendKeys(value);
     }
