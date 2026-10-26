@@ -1,6 +1,6 @@
 package ru.stellarburgers.tests;
 
-import io.qameta.allure.Description;
+import io.qameta.allure.Allure;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Rule;
 import org.junit.Test;
@@ -36,8 +36,10 @@ public class IngredientTransitionTest {
 
     @Test
     @DisplayName("Check the scroll after clicking on tab")
-    @Description("Scroll by clicking on the tab {categoryText}")
     public void scrollByTabSuccessTest() {
+        String description = "Scroll by clicking on the " + categoryText + " tab";
+        Allure.description(description);
+
         WebDriver driver = factory.getDriver();
 
         MainPage main = new MainPage(driver);

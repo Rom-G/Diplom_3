@@ -1,6 +1,6 @@
 package ru.stellarburgers.tests;
 
-import io.qameta.allure.Description;
+import io.qameta.allure.Allure;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
 import org.junit.Before;
@@ -49,8 +49,9 @@ public class LoginFlowTest {
 
     @Test
     @DisplayName("Check the different entry paths")
-    @Description("{allureDescription}")
     public void loginPathTest() {
+        Allure.description(allureDescription);
+
         WebDriver driver = factory.getDriver();
         MainPage main = new MainPage(driver);
         LoginPage login = new LoginPage(driver);
