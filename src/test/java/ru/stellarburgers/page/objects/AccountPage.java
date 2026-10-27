@@ -1,5 +1,6 @@
 package ru.stellarburgers.page.objects;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -17,11 +18,13 @@ public class AccountPage extends BasePage {
         super(driver);
     }
 
+    @Step("Extract value of Name field")
     public String extractNameFieldValue() {
-        return extractFieldValue(NAME_FIELD, "Name");
+        return extractFieldValue(NAME_FIELD);
     }
 
+    @Step("Extract value of Email field")
     public String extractEmailFieldValue() {
-        return extractFieldValue(EMAIL_FIELD, "Email");
+        return extractFieldValue(EMAIL_FIELD);
     }
 }
