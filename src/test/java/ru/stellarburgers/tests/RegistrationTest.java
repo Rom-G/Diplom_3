@@ -1,0 +1,85 @@
+package ru.stellarburgers.tests;
+
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import ru.stellarburgers.api.UserAuthedModel;
+import ru.stellarburgers.factory.DriverFactory;
+import ru.stellarburgers.page.objects.AccountPage;
+import ru.stellarburgers.page.objects.LoginPage;
+import ru.stellarburgers.page.objects.MainPage;
+import ru.stellarburgers.page.objects.RegistrationPage;
+
+import static org.junit.Assert.assertEquals;
+import static ru.stellarburgers.api.UserSteps.deleteUser;
+import static ru.stellarburgers.api.UserSteps.loginUser;
+import static ru.stellarburgers.data.UserData.*;
+
+public class RegistrationTest {
+
+    private MainPage main;
+    private LoginPage login;
+    private RegistrationPage registration;
+    private AccountPage account;
+
+    @Rule
+    public DriverFactory factory = new DriverFactory();
+
+    @Before
+    public void setUp() {
+        WebDriver driver = factory.getDriver();
+
+        main = new MainPage(driver);
+        login = new LoginPage(driver);
+        registration = new RegistrationPage(driver);
+        account = new AccountPage(driver);
+    }
+
+    @Test
+    @DisplayName("Check that the user can be created")
+    @Description("Base test for create user")
+    public void registrationSuccessTest() {
+        main.open();
+        main.clickLoginButton();
+        login.clickRegisterLink();
+        registration.fillForm(PASSWORD);
+        registration.clickRegisterButton();
+        login.fillForm();
+        login.clickLoginButton();
+        main.clickPersonalAccountLink();
+
+        assertEquals("The data in the Name field and the registration data are different",
+                NAME, account.extractNameFieldValue());
+        assertEquals("The data in the Email field and the registration data are different",
+                EMAIL, account.extractEmailFieldValue());
+    }
+
+    @Test
+    @DisplayName("Check the password length is less than 6 characters invalid")
+    @Description("The test verifies that it is impossible to create a user with an invalid password")
+    public void registrationWithPasswordLessThan6CharsFailsTest() {
+        main.open();
+        main.clickLoginButton();
+        login.clickRegisterLink();
+        registration.fillForm(INVALID_PASSWORD);
+        registration.clickRegisterButton();
+        String actualError = registration.findVisiblePasswordErrorAndGetText();
+
+        assertEquals("Получено сообщение: " + actualError + ". Ожидалось: " + RegistrationPage.PASSWORD_ERROR_TEXT,
+                RegistrationPage.PASSWORD_ERROR_TEXT,
+                actualError);
+    }
+
+    @After
+    public void tearDown() {
+        UserAuthedModel userAuthed = loginUser(EMAIL, PASSWORD).as(UserAuthedModel.class);
+
+        if (userAuthed.isSuccess()) {
+            deleteUser(userAuthed.getAccessToken());
+        }
+    }
+}
