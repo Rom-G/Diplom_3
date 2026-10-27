@@ -22,7 +22,8 @@ public class RecoveryPage  extends BasePage {
         getWait().until(ExpectedConditions.visibilityOfElementLocated(RECOVERY_BUTTON));
     }
 
+    @Step("Click the login link")
     public void clickLoginLink() {
-        clickElement(LOGIN_LINK, "login link");
+        clickElement(LOGIN_LINK);
     }
 }
