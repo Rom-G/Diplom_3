@@ -1,4 +1,4 @@
-package ru.stellarburgers.pageObjects;
+package ru.stellarburgers.page.objects;
 
 import io.qameta.allure.Step;
 import lombok.Getter;

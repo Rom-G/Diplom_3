@@ -1,4 +1,4 @@
-package ru.stellarburgers.pageObjects;
+package ru.stellarburgers.page.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
