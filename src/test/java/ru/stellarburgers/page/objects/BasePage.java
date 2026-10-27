@@ -20,8 +20,7 @@ public abstract class BasePage {
         this.wait = new WebDriverWait(driver, 10);
     }
 
-    @Step("Click the {name}")
-    public void clickElement(By locator, String name) {
+    public void clickElement(By locator) {
         WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
         element.click();
@@ -34,8 +33,7 @@ public abstract class BasePage {
         field.sendKeys(value);
     }
 
-    @Step("Extract value of {fieldName} field")
-    public String extractFieldValue(By locator, String fieldName) {
+    public String extractFieldValue(By locator) {
         WebElement field = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
         return field.getAttribute("value");
     }
