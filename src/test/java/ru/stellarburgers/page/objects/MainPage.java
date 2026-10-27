@@ -32,12 +32,14 @@ public class MainPage extends BasePage {
         getWait().until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
     }
 
+    @Step("Click the login button")
     public void clickLoginButton() {
-        clickElement(LOGIN_BUTTON, "login button");
+        clickElement(LOGIN_BUTTON);
     }
 
+    @Step("Click the personal account link")
     public void clickPersonalAccountLink() {
-        clickElement(ACCOUNT_LINK, "personal account link");
+        clickElement(ACCOUNT_LINK);
     }
 
     @Step("Click on the {tabText} tab by JavascriptExecutor")
