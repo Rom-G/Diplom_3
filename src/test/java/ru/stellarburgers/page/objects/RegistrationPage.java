@@ -58,11 +58,13 @@ public class RegistrationPage extends BasePage {
                 .trim();
     }
 
+    @Step("Click the register button")
     public void clickRegisterButton() {
-        clickElement(REGISTER_BUTTON, "register button");
+        clickElement(REGISTER_BUTTON);
     }
 
+    @Step("Click the login link")
     public void clickLoginLink() {
-        clickElement(LOGIN_LINK, "login link");
+        clickElement(LOGIN_LINK);
     }
 }
