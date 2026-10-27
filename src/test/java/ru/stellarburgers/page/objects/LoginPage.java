@@ -30,11 +30,13 @@ public class LoginPage extends BasePage {
         fillInput(PASSWORD_FIELD, PASSWORD);
     }
 
+    @Step("Click the registration link")
     public void clickRegisterLink() {
-        clickElement(REGISTER_LINK, "registration link");
+        clickElement(REGISTER_LINK);
     }
 
+    @Step("Click the login button")
     public void clickLoginButton() {
-        clickElement(LOGIN_BUTTON, "login button");
+        clickElement(LOGIN_BUTTON);
     }
 }
